@@ -1,0 +1,239 @@
+﻿@model TermProject2.Models.student
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+} 
+
+
+  
+<div class="row">
+<div id="sidebar" class="span3">
+</div>
+
+	<div class="span9">
+    <ul class="breadcrumb">
+		<li class="active">Online Admission<span class="divider">/</span></li>
+		<li class="active">Check Applications</li>
+        <li class="active">Edit</li>
+        <li class=""><input type="text" name="reg" id="reg" placeholder="Reg. Id" class="pull-left"/>
+            <button type="submit" class="btn btn-default" id="b1">Search </button></li>
+        <script>
+            $('#b1').click(function () {
+
+                var userName = $('#reg').val();
+                $.getJSON("/Admin/check2?reg=" + userName, function (data) {
+                    if (data) {
+                        alert("Record  Found.");
+                        $("#regid").val(data.Id);
+                        $("#fname").val(data.fname);
+                        $("#lname").val(data.lname);
+                        $("#father").val(data.father);
+                        $("#cnic").val(data.cnic);
+                        $("#email").val(data.email);
+                        $("#mphone").val(data.mphone);
+                        $("#qualification").val(data.qualification);
+                        $("#cgpa").val(data.cgpa);
+                        $("#institute").val(data.institute);
+                        $("#dob").val(data.dob);
+                        $("#address").val(data.address);
+                        $("#country").val(data.country);
+                        $("#province").val(data.province);
+                        $("#city").val(data.city);
+                        $("#hphone").val(data.hphone);
+                        //alert("Record  Found.");
+                        //$('#d1').load("/Admin/Load?regid=" + userName);
+                        //$('#inputFname').val("");
+
+
+                    }
+                    if (!data) {
+                        alert("No Record Found");
+                        $("#regid").val("");
+                        $("#fname").val("");
+                        $("#lname").val("");
+                        $("#father").val("");
+                        $("#cnic").val("");
+                        $("#email").val("");
+                        $("#mphone").val("");
+                        $("#qualification").val("");
+                        $("#cgpa").val("");
+                        $("#institute").val("");
+                        $("#dob").val("");
+                        $("#address").val("");
+                        $("#country").val("");
+                        $("#province").val("");
+                        $("#city").val("");
+                        $("#hphone").val("");
+                    }
+                    
+
+                });
+
+            });
+            </script>
+    </ul>
+	<h3>Checking Applications</h3>	
+	<hr class="soft"/>
+	<div class="well">
+	<div id="d1">	 
+        <form id="f1" class="form-horizontal" action="" method="post">
+            <h3>Your personal information</h3>
+
+
+            <div class="control-group">
+                <label class="control-label" for="inputFname" >Regisration Id <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="regid" placeholder="Reg. Id" name="regid" readonly />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputFname" >First name <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="fname" placeholder="First Name" name="fname"  readonly />
+                </div>
+            </div>
+            <script>
+                $('#n1').focusout(function () {
+
+                    var userName = $('#inputFname').val();
+                    $.getJSON("/Admission/CheckUserName?Fname=" + userName, function (data) {
+                        if (data) {
+                            alert("User First Name Already Exists.");
+                            $('#n1').val("");
+                        }
+                        
+                    });
+
+                });
+            </script>
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Last name <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="lname" placeholder="Last Name" name="lname" readonly />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Father's name <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="father" placeholder="Father's name" name="father" readonly />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputLname">CNIC <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="cnic" placeholder="CNIC" name="cnic" readonly />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">Email <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="email" placeholder="Email" name="email" readonly />
+                </div>
+            </div>
+
+            <script>
+                $('#n3').focusout(function () {
+
+                })
+            </script>
+            <div class="control-group">
+                <label class="control-label" for="mobile">Mobile Phone </label>
+                <div class="controls">
+                    <input type="text" name="mphone" id="mphone" placeholder="Mobile Phone" readonly />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Qualification <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="qualification" name="qualification" placeholder="Qualification" readonly >
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Percentage/CGPA <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="percent" name="percent" placeholder="Percentage/CGPA" readonly  >
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Institution <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="institute" name="institute" placeholder="Institution "readonly  >
+                </div>
+            </div>
+
+            <!--<script>
+                $('#n5').focusout(function () {
+                    if ($('#n4').val() != $('#n5').val()) {
+                        alert("Password Mismatch")
+                        $('#n4').val("");
+                        $('#in5').val("");
+                    }
+                })
+            </script>-->
+            <div class="control-group">
+                <label class="control-label" for="dob">Date of Birth <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="dob" placeholder="Date of Birth" name="dob" readonly />
+                </div>
+            </div>
+
+
+
+            <h3>Your address</h3>
+            <div class="control-group">
+                <label class="control-label" for="address">Address<sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="address" placeholder="Address" name="address" readonly /> 
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="country">Country <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="country" name="country" placeholder="Country" readonly />
+                </div>
+            </div>
+
+             <div class="control-group">
+                <label class="control-label" for="province">Province <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="province" name="province" placeholder="Province" readonly >
+                </div>
+            </div>
+            
+
+            <div class="control-group">
+                <label class="control-label" for="city">City<sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="city" placeholder="city" name="city" readonly />
+                </div>
+            </div>
+
+           <!--<div class="control-group">
+                <label class="control-label" for="aditionalInfo">Additional information</label>
+                <div class="controls">
+                    <textarea name="aditional_info" id="n11" cols="26" rows="3" placeholder="Additional information"></textarea>
+                </div>
+            </div>-->
+            <div class="control-group">
+                <label class="control-label" for="phone">Home phone <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" name="hphone" id="hphone" placeholder="phone" readonly  /> 
+                </div>
+            </div>
+             
+            
+        </form>
+       </div>
+	 
+        
+</div>
+
+</div>
+</div>  

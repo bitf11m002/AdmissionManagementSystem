@@ -1,0 +1,107 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+  
+<div class="row">
+<div id="sidebar" class="span3">
+</div>
+
+	<div class="span9">
+    <ul class="breadcrumb">
+		<li class="active">Online Admission<span class="divider">/</span></li>
+		<li class="active">Registration Id</li>
+        <li class=""><input type="text" name="cnic" id="cn" placeholder="cnic" class="pull-left"/>
+            <button type="submit" class="btn btn-default" id="b1">Search </button></li>
+        <script>
+
+            $('#b1').click(function () {
+
+                var userName = $('#cn').val();
+                $.getJSON("/Admission/check?cnic=" + userName, function (data) {
+                    if (data) {
+                        alert("Record  Found.");
+                        $("#regid").val(data.Id);
+                        $("#fname").val(data.fname);
+                        $("#lname").val(data.lname);
+                        
+                        $("#cnic").val(data.cnic);
+                        
+                        //alert("Record  Found.");
+                        //$('#d1').load("/Admin/Load?regid=" + userName);
+                        //$('#inputFname').val("");
+
+
+                    }
+                    if (!data) {
+                        alert("No Record Found");
+                        $("#regid").val("");
+                        $("#fname").val("");
+                        $("#lname").val("");
+                        
+                        $("#cnic").val("");
+                        
+                    }
+
+
+                });
+
+            });
+            </script>
+    </ul>
+	<h3>Application Status</h3>	
+	<hr class="soft"/>
+	<div class="well">
+	    
+        <div id="d1">	
+        <form id="f1" class="form-horizontal" action="" method="post">
+            <h3>Your personal information</h3>
+
+
+            <div class="control-group">
+                <label class="control-label" for="inputFname" >Regisration Id <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="regid" placeholder="Reg. Id" name="regid" readonly />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputFname" >First name <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="fname" placeholder="First Name" name="fname"  readonly />
+                </div>
+            </div>
+            <script>
+                $('#n1').focusout(function () {
+
+                    var userName = $('#inputFname').val();
+                    $.getJSON("/Admission/CheckUserName?Fname=" + userName, function (data) {
+                        if (data) {
+                            alert("User First Name Already Exists.");
+                            $('#n1').val("");
+                        }
+
+                    });
+
+                });
+            </script>
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Last name <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="lname" placeholder="Last Name" name="lname" readonly />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputLname">CNIC <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="cnic" placeholder="CNIC" name="cnic" readonly />
+                </div>
+            </div>
+
+        </form>
+</div>
+
+</div>
+</div>  
+    </div>

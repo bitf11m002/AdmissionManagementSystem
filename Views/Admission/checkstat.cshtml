@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+  
+<div class="row">
+<div id="sidebar" class="span3">
+</div>
+
+	<div class="span9">
+    <ul class="breadcrumb">
+		<li class="active">Online Admission<span class="divider">/</span></li>
+		<li class="active">Application Status</li>
+        <li class=""><input type="text" name="id" id="id" placeholder="CNIC" class="pull-left"/>
+            <button type="submit" class="btn btn-default" id="b1">Search </button></li>
+        <script>
+            $('#b1').click(function () {
+
+                var userName = $('#id').val();
+                $.getJSON("/Admission/check?cnic=" + userName, function (data) {
+                    if (data) {
+                        alert("Record  Found.");
+                        $('#d1').load("/Admission/load2?cnic=" + userName);
+                        //$('#inputFname').val("");
+                    }
+                    if (!data) {
+                        alert("No Record Found");
+                    }
+                });
+
+            });
+            </script>
+
+    </ul>
+	<h3>Application Status</h3>	
+	<hr class="soft"/>
+	<div class="well">
+	    
+        <div id="d1">	
+        
+</div>
+
+</div>
+</div>  
+    </div>

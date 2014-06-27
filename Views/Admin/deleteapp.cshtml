@@ -1,0 +1,56 @@
+﻿@model TermProject2.Models.student
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+  
+<div class="row">
+<div id="sidebar" class="span3">
+</div>
+
+	<div class="span9">
+    <ul class="breadcrumb">
+		<li class="active">Online Admission<span class="divider">/</span></li>
+		<li class="active">Delete Application</li>
+    </ul>
+	<h3>Delete Application</h3>	
+	<hr class="soft"/>
+	<div class="well">
+	<div>	 </div>
+	 @using (Html.BeginForm("deleteapp3", "Admin", FormMethod.Post))
+  {
+  
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Id)
+
+        </div>
+      
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Id)
+            @Html.ValidationMessageFor(model => model.Id)
+        </div>
+
+        
+
+        <p>
+            <input type="submit" value="Delete" />
+        </p>
+    
+  }
+
+<div>
+    @Html.ActionLink("Home", "admin")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jquery")
+
+}
+
+        
+</div>
+
+</div>
+</div>  
