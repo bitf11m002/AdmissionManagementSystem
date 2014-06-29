@@ -1,0 +1,239 @@
+﻿@model TermProject2.Models.student  
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+  
+
+  
+<div class="row">
+<div id="sidebar" class="span3">
+</div>
+
+	<div class="span9">
+    <ul class="breadcrumb">
+		<li class="active">Online Admission<span class="divider">/</span></li>
+		<li class="active">Registration</li>
+    </ul>
+	<h3> Registration</h3>	
+	<hr class="soft"/>
+	<div class="well">
+	<div>	 </div>
+	 <div >	 </div>
+        <form id="f1" class="form-horizontal" action="/Admission/insertdata" method="post">
+            <h3>Your personal information</h3>
+           
+
+            <div class="control-group">
+                <label class="control-label" for="inputFname">First name <sup>*</sup></label>
+                @Html.ValidationMessageFor(x=>x.fname)
+                <div class="controls">
+                    <input type="text" id="fname" placeholder="First Name"  name="fname" required="required">
+                </div>
+            </div>
+           
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Last name <sup>*</sup></label>
+                @Html.ValidationMessageFor(x=>x.lname)
+                 <div class="controls">
+                    <input type="text" id="lname" placeholder="Last Name" name="lname" required="required">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Father's name <sup>*</sup></label>
+                 @Html.ValidationMessageFor(x=>x.father)
+                <div class="controls">
+                    <input type="text" id="father" placeholder="Father's name" name="father" required="required">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputLname">CNIC <sup>*</sup></label>
+                 
+                <div class="controls">
+                    <input type="text" id="cnic2" placeholder="CNIC" name="cnic"  required="required"/><span>@Html.ValidationMessageFor(x=>x.cnic)</span>
+                </div>
+            </div>
+             <script>
+                 //$('#cnic2').focusout(function () {
+
+                 //    var userName = $('#cnic2').val();
+                 //    $.getJSON("/Admission/checkcnic?cnic=" + userName, function (data) {
+                 //        if (data) {
+                 //            alert("CNIC Already Exists.");
+                 //            $('#cnic2').val("");
+                 //        }
+                 //        else {
+                 //            //alert("bla bla bla");
+                 //        }
+                 //    });
+
+                 //});
+            </script>
+
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">Email <sup>*</sup></label>
+                 @Html.ValidationMessageFor(x=>x.email)
+                <div class="controls">
+                    <input type="text" id="email" placeholder="Email" name="email" required="required">
+                </div>
+            </div>
+
+            <script>
+                $('#n3').focusout(function () {
+
+                })
+            </script>
+            <div class="control-group">
+                <label class="control-label" for="mobile">Mobile Phone </label>
+                 @Html.ValidationMessageFor(x=>x.mphone)
+                <div class="controls">
+                    <input type="text" name="mphone" id="mphone" placeholder="Mobile Phone" required="required"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Qualification <sup>*</sup></label>
+                 @Html.ValidationMessageFor(x=>x.qualification)
+                <div class="controls">
+                    <input type="text" id="qual" name="qualification" placeholder="Qualification" required="required"/><span>Graduate , Undergraduate , Masters</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Percentage/CGPA <sup>*</sup></label>
+                 @Html.ValidationMessageFor(x=>x.cgpa)
+                <div class="controls">
+                    <input type="text" id="cgpa" name="cgpa" placeholder="Percentage/CGPA" required="required"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Institution <sup>*</sup></label>
+                @Html.ValidationMessageFor(x=>x.institute)
+                 <div class="controls">
+                    <input type="text" id="institute" name="institute" placeholder="Institution " required="required"/><span>Institute Recently Attended</span>
+                </div>
+            </div>
+
+            <!--<script>
+                $('#n5').focusout(function () {
+                    if ($('#n4').val() != $('#n5').val()) {
+                        alert("Password Mismatch")
+                        $('#n4').val("");
+                        $('#in5').val("");
+                    }
+                })
+            </script>-->
+            <div class="control-group">
+                <label class="control-label" for="dob">Date of Birth <sup>*</sup></label>
+                 @Html.ValidationMessageFor(x=>x.dob)
+                <div class="controls">
+                    <input type="text" id="dob" placeholder="Date of Birth" name="dob" value="@System.DateTime.Now.Date" required="required"/>
+                </div>
+            </div>
+
+
+
+            <h3>Your address</h3>
+            <div class="control-group">
+                <label class="control-label" for="adress">Address<sup>*</sup></label>
+                 @Html.ValidationMessageFor(x=>x.address)
+                <div class="controls">
+                    <input type="text" id="address" placeholder="Address" name="address" required="required" /> <span>Street address, P.O. box, company name, c/o</span>
+                </div>
+            </div>
+
+             <div class="control-group">
+                <label class="control-label" for="country">Country <sup>*</sup></label>
+                  @Html.ValidationMessageFor(x=>x.country)
+                <div class="controls">
+                    <input type="text" id="country" name="country" placeholder="Country" required="required"/>
+                </div>
+            </div>
+
+             <div class="control-group">
+                <label class="control-label" for="province">Province <sup>*</sup></label>
+                  @Html.ValidationMessageFor(x=>x.province)
+                <div class="controls">
+                    <input type="text" id="province" name="province" placeholder="Province" required="required"/ >
+                </div>
+            </div>
+            
+
+            <div class="control-group">
+                <label class="control-label" for="city">City<sup>*</sup></label>
+                 @Html.ValidationMessageFor(x=>x.city)
+                <div class="controls">
+                    <input type="text" id="city" placeholder="city" name="city" required="required" />
+                </div>
+            </div>
+
+            <!--<div class="control-group">
+                <label class="control-label" for="aditionalInfo">Additional information</label>
+                <div class="controls">
+                    <textarea name="aditional_info" id="n11" cols="26" rows="3" placeholder="Additional information"></textarea>
+                </div>
+            </div>-->
+            <div class="control-group">
+                <label class="control-label" for="phone">Home phone <sup>*</sup></label>
+                 @Html.ValidationMessageFor(x=>x.hphone)
+                <div class="controls">
+                    @*@Html.TextBoxFor(x=>x.hphone)*@
+                    <input type="text" name="hphone" id="n12" placeholder="phone" required="required" /> <span>You must provide at least one phone number</span>
+                </div>
+            </div>
+
+           @* <div class="control-group">
+                <label class="control-label" for="dob">Colored Copy of Recent Result<sup>*</sup></label>
+                <div class="controls">
+                    <input type="file" id="file1" name="file" required>
+                </div>
+            </div>*@
+
+            <div class="control-group">
+                 <a href="/Admission/upload" >Upload Color Scan of Recent Result</a>
+                    <!--<input type="submit" id="b2" value="Upload" />-->
+                </div>
+            
+
+            <p><sup>*</sup>Required field	</p>
+           
+            <div class="control-group">
+                <div class="controls">
+                    <input type="hidden" name="email_create" value="1">
+                    <input type="hidden" name="is_new_customer" value="1">
+                    <input class="btn btn-large" type="submit" value="Register" id="sub" name="sub"/>
+                </div>
+                </div>
+            @*<script>
+                $('#sub').click(function () {
+
+                    alert("You have been Registered");
+
+                        //var userName = $('#cnic2').val();
+                        //$.getJSON("/Admission/checkcnic?cnic=" + userName, function (data) {
+                            if (data) {
+                                alert("Your Registration Id is "+data.Id);
+                                
+                            }
+                            else {
+                                //alert("bla bla bla");
+                            }
+                        });
+
+                    });
+            </script>*@
+        
+            @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jquery")
+   
+    </form>
+        </div>
+        </div>
+    </div>
+    
